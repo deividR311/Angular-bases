@@ -1,0 +1,26 @@
+<h1> {{ title }} </h1>
+<hr>
+
+<h3>Counter {{ counter }}</h3>
+
+<button (click)="increaseBy()">+1</button>
+<button (click)="decreaseBy()">-1</button>
+
+<h3>Listado de Heroes</h3>
+<div *ngIf="heroDeleted; else nothingDeleted;">
+  <h3>Ultimo Heroe borrado {{ heroDeleted }}</h3>
+</div>
+
+<ng-template #nothingDeleted>
+  <h3>No ha borrado nada</h3>
+</ng-template>
+
+<button *ngIf="heros.length > 0" (click)="deleteLastHero()">Delete</button>
+
+<hr>
+
+<app-counter [heros]="heros"></app-counter> 
+
+<hr>
+
+<app-form (onNewCharacter)="onNewCharacter($event)" ></app-form>
